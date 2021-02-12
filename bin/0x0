@@ -56,7 +56,7 @@ print_error() {
 }
 
 if [[ ! "${1:-}" || "${1:-}" == "--help" || "${1:-}" == "-h" ]]; then
-	echo -e "${STYLE_BOLD}0x0, a wrapper script for https://0x0.st/${STYLE_RESET}\n"
+	echo -e "${STYLE_BOLD}0x0, a wrapper script for https://hjkl.ga/${STYLE_RESET}\n"
   echo -e "  Upload a file:"
   echo -e "      ${STYLE_COMMAND}$(basename "$0") ${STYLE_ARG}<file>${STYLE_RESET}\n"
   echo -e "  Upload from an URL (the file won't be fetched locally):"
@@ -86,8 +86,8 @@ fi
 
 if is_url "$1"; then
   # Upload from URL
-  curl -F "url=$1" https://0x0.st
+  curl --progress-bar -F "url=$1" https://hjkl.ga
 else
   # Upload from file
-  curl -F "file=@$1" https://0x0.st
+  curl --progress-bar -F "file=@$1" https://hjkl.ga
 fi
